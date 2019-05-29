@@ -5,6 +5,22 @@ Code and Ideas for BIT Hackathon by SONAE MC for team Pyto
 * [TAIKAI](https://taikai.network/bit/challenges/bithackathon)
 * [Slack](https://bithackathonworkspace.slack.com/)
 
+## Agenda
+#### Day 1 - Thursday, May 30th Time
+* 13:30 Check-in
+* 14:00 Opening Session
+* 15:00 Let the games begin! The clock is ticking...
+* You'll be visited by mentors during the afternoon.
+* 20:00 Dinner (Checkpoint)*
+#### Day 2 - Friday, May 31st Time
+* 08:30 Breakfast (Checkpoint)*
+* 12:00 Lunch
+* 13:00 Intermediate evaluation
+* 15:00 TIME's UP! Deadline to submit presentations
+* 16:00 Showtime! It's your time to shine!
+* 17:30 Deliberation... or should we say Investment time!?
+* 18:00 And the winner is ******
+* 18:30 Farewell
 
 ## Ideas 
 
@@ -64,9 +80,25 @@ Code and Ideas for BIT Hackathon by SONAE MC for team Pyto
 ### 4 - Some Other Fun Ideas / Generic Features
 
 #### ContinenteGO
-- Bluetooth beacons spread accross stores would give discounts/portion of discount when passed by
+- Bluetooth beacons randomly spread accross stores would give discounts/portion of discount when passed by
 - Can me extensively gamified
     - N beacons per day, per store. Streak days can lead to discounts
     - Leaderboards
 
+#### Continente Track
+ - Bluetooth beacons spread accross stores on all aisles so that we can track the user throughout the store
+ - Use this to do something with the customer's real experience
+ Pros:
+    . `Product Data Enrichment` which is one of the explicit goals of the contest
+    . 
     
+#### Continente Data Science (CDS)
+ - Use APIs and Datasets to produce intreresting visualization techniques that Sonae likes to see
+
+# How to Win
+The voting criteria used by our judges will be based on:
+1. Innovation level
+2. Relevance to retail
+3. Developed prototype
+4. Feasibility and reproducibility
+5. Presentation
