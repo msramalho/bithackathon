@@ -1,9 +1,20 @@
 # bithackathon
 Code and Ideas for BIT Hackathon by SONAE MC for team Pyto
 
+Main
 * [Hackathon Homepage](https://bithackathon.sonae.pt/)
 * [TAIKAI](https://taikai.network/bit/challenges/bithackathon)
 * [Slack](https://bithackathonworkspace.slack.com/)
+
+Guides
+* [Event Guide](docs/guide.pdf)
+* [Accessing Data Guide](docs/accessing_data.pdf)
+* [Taikai Guide](docs/taikai_guide.pdf)
+
+Data & APIs
+* [Dataset Documentation](https://docs.google.com/spreadsheets/d/1DvkhnNFzAzWohmlhkFJvDuI_FcGxWTVNB1PGzgaqr8w/edit#gid=0)
+* [APIs](https://sonae-bithackathon2019.apigee.io/)
+
 
 ## Agenda
 #### Day 1 - Thursday, May 30th Time
