@@ -44,7 +44,7 @@ Code and Ideas for BIT Hackathon by SONAE MC for team Pyto
 #### Cons
 - Is this the "heatmap" of Bithackathon?
 
-### NutriContinente
+### 3 - NutriContinente
 
 - Base is same as 2, "app to phisically track your cart during a stay at Continente"
 - Focused on nutritional information on what is on the cart
@@ -61,7 +61,7 @@ Code and Ideas for BIT Hackathon by SONAE MC for team Pyto
     - Professional "handmande" pool of products?
 - Again, is this the "heatmap" of Bithackathon?
 
-### Some Other Fun Ideas / Generic Features
+### 4 - Some Other Fun Ideas / Generic Features
 
 #### ContinenteGO
 - Bluetooth beacons spread accross stores would give discounts/portion of discount when passed by
