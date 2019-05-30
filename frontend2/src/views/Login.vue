@@ -38,12 +38,15 @@
                                             placeholder="Password"
                                             addon-left-icon="ni ni-lock-circle-open">
                                 </base-input>
+                                <input type="submit">
+                                <!--
                                 <div class="text-center">
                                     <base-button 
                                     type="submit"
                                     class="my-4">Entrar
                                     </base-button>
                                 </div>
+                                -->
                             </form>
                         </template>
                     </card>
@@ -54,6 +57,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 
 export default {
 
@@ -66,24 +70,37 @@ export default {
 			},
 
       methods: {
-        login: function () {
-          this.$http.post('http://localhost:3000/users/login', {
+        login: function (e) {
+          this.$http.post('/users/login', {
             password: this.password,
             email: this.email
-          }).then(function (response) {
-            if (response.status === 200 && 'token' in response.body && 'serviceToken' in response.body) {
+          }).then((response) => {
+
+              console.log(response);
+            if (response.status === 200 && 'jwtToken' in response.data && 'serviceToken' in response.data) {
+                console.log('inside');
+
+                let { jwtToken, serviceToken } = response.data;
+
               this.$session.start()
-              this.$session.set('jwt', response.body.token)
-              this.$session.set('serviceToken', response.body.token)
+              this.$session.set('jwtToken', jwtToken)
+              this.$session.set('serviceToken', serviceToken)
 
-              Vue.http.headers.common['Authorization'] = 'Bearer ' + response.body.serviceToken
-              Vue.http.headers.common['JWT'] = response.body.jwt
+              // Token for Continente's API
+              this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + serviceToken;
 
-              //this.$router.push('/panel/search')
+              // Token for our API
+              this.axios.defaults.headers.common['JWT'] = jwtToken;
+
+              console.log('Logged in! (?)');
+              this.$router.push('/profile');
             }
           }, function (err) {
             console.log('err', err)
           })
+
+          e.preventDefault();
+          
         }
     }
 };
