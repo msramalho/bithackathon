@@ -21,6 +21,7 @@
 
             <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                 <router-link to="/lists" class="nav-link"><i class="ni ni-air-baloon"></i>Minhas Listas</router-link>
+                <router-link to="/profile" class="nav-link"><i class="ni ni-single-02"></i>Perfil</router-link>
             </ul>
         </base-nav>
     </header>
