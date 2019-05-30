@@ -1,8 +1,7 @@
-import { Entity, model, property } from '@loopback/repository';
+import {Entity, model, property} from '@loopback/repository';
 
-@model({ settings: {} })
+@model({settings: {}})
 export class User extends Entity {
-
   @property({
     type: 'string',
     id: true,
@@ -24,7 +23,6 @@ export class User extends Entity {
     type: 'string',
   })
   img?: string;
-
 
   constructor(data?: Partial<User>) {
     super(data);

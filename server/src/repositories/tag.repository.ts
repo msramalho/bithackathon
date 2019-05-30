@@ -7,9 +7,7 @@ export class TagRepository extends DefaultCrudRepository<
   Tag,
   typeof Tag.prototype.name
 > {
-  constructor(
-    @inject('datasources.memory') dataSource: MemoryDataSource,
-  ) {
+  constructor(@inject('datasources.memory') dataSource: MemoryDataSource) {
     super(Tag, dataSource);
   }
 }

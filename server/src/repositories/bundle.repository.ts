@@ -7,9 +7,7 @@ export class BundleRepository extends DefaultCrudRepository<
   Bundle,
   typeof Bundle.prototype._id
 > {
-  constructor(
-    @inject('datasources.memory') dataSource: MemoryDataSource,
-  ) {
+  constructor(@inject('datasources.memory') dataSource: MemoryDataSource) {
     super(Bundle, dataSource);
   }
 }

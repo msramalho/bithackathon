@@ -22,7 +22,7 @@ import {BundleRepository} from '../repositories';
 export class BundleController {
   constructor(
     @repository(BundleRepository)
-    public bundleRepository : BundleRepository,
+    public bundleRepository: BundleRepository,
   ) {}
 
   @post('/bundles', {

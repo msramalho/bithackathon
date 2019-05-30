@@ -22,7 +22,7 @@ import {UserRepository} from '../repositories';
 export class UserController {
   constructor(
     @repository(UserRepository)
-    public userRepository : UserRepository,
+    public userRepository: UserRepository,
   ) {}
 
   @post('/users', {

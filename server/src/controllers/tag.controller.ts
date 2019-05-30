@@ -22,7 +22,7 @@ import {TagRepository} from '../repositories';
 export class TagController {
   constructor(
     @repository(TagRepository)
-    public tagRepository : TagRepository,
+    public tagRepository: TagRepository,
   ) {}
 
   @post('/tags', {

@@ -7,9 +7,7 @@ export class BundleTagRelationRepository extends DefaultCrudRepository<
   BundleTagRelation,
   typeof BundleTagRelation.prototype._id
 > {
-  constructor(
-    @inject('datasources.memory') dataSource: MemoryDataSource,
-  ) {
+  constructor(@inject('datasources.memory') dataSource: MemoryDataSource) {
     super(BundleTagRelation, dataSource);
   }
 }

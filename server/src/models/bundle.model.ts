@@ -1,8 +1,7 @@
-import { Entity, model, property } from '@loopback/repository';
+import {Entity, model, property} from '@loopback/repository';
 
-@model({ settings: { strict: false } })
+@model({settings: {strict: false}})
 export class Bundle extends Entity {
-
   @property({
     type: 'string',
     id: true,

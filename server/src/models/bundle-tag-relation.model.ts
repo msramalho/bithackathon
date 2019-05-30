@@ -1,8 +1,7 @@
-import { Entity, model, property } from '@loopback/repository';
+import {Entity, model, property} from '@loopback/repository';
 
-@model({ settings: {} })
+@model({settings: {}})
 export class BundleTagRelation extends Entity {
-
   @property({
     type: 'string',
     id: true,
@@ -20,7 +19,6 @@ export class BundleTagRelation extends Entity {
     required: true,
   })
   tagId: string;
-
 
   constructor(data?: Partial<BundleTagRelation>) {
     super(data);

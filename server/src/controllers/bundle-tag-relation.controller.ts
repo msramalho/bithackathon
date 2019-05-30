@@ -22,18 +22,22 @@ import {BundleTagRelationRepository} from '../repositories';
 export class BundleTagRelationController {
   constructor(
     @repository(BundleTagRelationRepository)
-    public bundleTagRelationRepository : BundleTagRelationRepository,
+    public bundleTagRelationRepository: BundleTagRelationRepository,
   ) {}
 
   @post('/bundle-tag-relations', {
     responses: {
       '200': {
         description: 'BundleTagRelation model instance',
-        content: {'application/json': {schema: {'x-ts-type': BundleTagRelation}}},
+        content: {
+          'application/json': {schema: {'x-ts-type': BundleTagRelation}},
+        },
       },
     },
   })
-  async create(@requestBody() bundleTagRelation: BundleTagRelation): Promise<BundleTagRelation> {
+  async create(
+    @requestBody() bundleTagRelation: BundleTagRelation,
+  ): Promise<BundleTagRelation> {
     return await this.bundleTagRelationRepository.create(bundleTagRelation);
   }
 
@@ -46,7 +50,8 @@ export class BundleTagRelationController {
     },
   })
   async count(
-    @param.query.object('where', getWhereSchemaFor(BundleTagRelation)) where?: Where,
+    @param.query.object('where', getWhereSchemaFor(BundleTagRelation))
+    where?: Where,
   ): Promise<Count> {
     return await this.bundleTagRelationRepository.count(where);
   }
@@ -64,7 +69,8 @@ export class BundleTagRelationController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(BundleTagRelation)) filter?: Filter,
+    @param.query.object('filter', getFilterSchemaFor(BundleTagRelation))
+    filter?: Filter,
   ): Promise<BundleTagRelation[]> {
     return await this.bundleTagRelationRepository.find(filter);
   }
@@ -79,20 +85,28 @@ export class BundleTagRelationController {
   })
   async updateAll(
     @requestBody() bundleTagRelation: BundleTagRelation,
-    @param.query.object('where', getWhereSchemaFor(BundleTagRelation)) where?: Where,
+    @param.query.object('where', getWhereSchemaFor(BundleTagRelation))
+    where?: Where,
   ): Promise<Count> {
-    return await this.bundleTagRelationRepository.updateAll(bundleTagRelation, where);
+    return await this.bundleTagRelationRepository.updateAll(
+      bundleTagRelation,
+      where,
+    );
   }
 
   @get('/bundle-tag-relations/{id}', {
     responses: {
       '200': {
         description: 'BundleTagRelation model instance',
-        content: {'application/json': {schema: {'x-ts-type': BundleTagRelation}}},
+        content: {
+          'application/json': {schema: {'x-ts-type': BundleTagRelation}},
+        },
       },
     },
   })
-  async findById(@param.path.string('id') id: string): Promise<BundleTagRelation> {
+  async findById(
+    @param.path.string('id') id: string,
+  ): Promise<BundleTagRelation> {
     return await this.bundleTagRelationRepository.findById(id);
   }
 
