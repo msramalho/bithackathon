@@ -1,6 +1,7 @@
-import {Entity, model, property} from '@loopback/repository';
+import { Entity, model, property } from '@loopback/repository';
 
-@model({settings: {strict: false}})
+// @model({ settings: { strict: false } })
+@model({ settings: {} })
 export class Bundle extends Entity {
   @property({
     type: 'string',
@@ -26,7 +27,7 @@ export class Bundle extends Entity {
   })
   img: string;
 
-  @property({
+  @property.array(String, {
     type: 'array',
     itemType: 'string',
     required: true,
