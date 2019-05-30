@@ -42,7 +42,6 @@ Data & APIs
  - A user can be a Poster or a Deliverer, ideally both
  - Posters create one (in the future more than one) shopping list
    - using the API endpoint `/search/freeText`
-   - Maybe: can see the nutritional values `/nutritionalInfo/nutritionalInfo`
    - Associate one address to this list
    - Associate a price they are willing to pay for someone to bring it home
    - Specify the time they want the delivery to occur
