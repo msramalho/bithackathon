@@ -24,6 +24,12 @@ export class User extends Entity {
   })
   img?: string;
 
+  @property({
+    type: 'Object',
+    description: 'The User object returned by the continente API',
+  })
+  userContent?: Object;
+
   constructor(data?: Partial<User>) {
     super(data);
   }
