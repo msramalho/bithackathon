@@ -7,6 +7,7 @@ import Landing from "./views/Landing.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
+import Lists from "./views/Lists.vue";
 
 Vue.use(Router);
 
@@ -55,6 +56,15 @@ export default new Router({
       components: {
         header: AppHeader,
         default: Profile,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/lists",
+      name: "lists",
+      components: {
+        header: AppHeader,
+        default: Lists,
         footer: AppFooter
       }
     }

@@ -23,20 +23,26 @@
                                 <small><img slot="icon" src="img/brand/continente.png" style="height:16px;"> Entrar com conta Continente</small>
                             </div>
                             <form 
-                                @submit="loginContinente"
+                                @submit="login"
                                 role="form">
-                                <base-input alternative
+                                <base-input 
+                                            v-model="email"
+                                            alternative
                                             class="mb-3"
                                             placeholder="Email"
                                             addon-left-icon="ni ni-email-83">
                                 </base-input>
-                                <base-input alternative
+                                <base-input v-model="password"
+                                            alternative
                                             type="password"
                                             placeholder="Password"
                                             addon-left-icon="ni ni-lock-circle-open">
                                 </base-input>
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4">Entrar</base-button>
+                                    <base-button 
+                                    type="submit"
+                                    class="my-4">Entrar
+                                    </base-button>
                                 </div>
                             </form>
                         </template>
@@ -46,27 +52,40 @@
         </div>
     </section>
 </template>
+
 <script>
+
 export default {
-methods:{
-    loginContinente: function (e) {
-        console.log(e);
-      if (this.name && this.age) {
-        return true;
-      }
 
-      this.errors = [];
 
-      if (!this.name) {
-        this.errors.push('Name required.');
-      }
-      if (!this.age) {
-        this.errors.push('Age required.');
-      }
+			data () {
+				return {
+                    email: '',
+                    password: '',
+				}
+			},
 
-      e.preventDefault();
+      methods: {
+        login: function () {
+          this.$http.post('http://localhost:3000/users/login', {
+            password: this.password,
+            email: this.email
+          }).then(function (response) {
+            if (response.status === 200 && 'token' in response.body && 'serviceToken' in response.body) {
+              this.$session.start()
+              this.$session.set('jwt', response.body.token)
+              this.$session.set('serviceToken', response.body.token)
+
+              Vue.http.headers.common['Authorization'] = 'Bearer ' + response.body.serviceToken
+              Vue.http.headers.common['JWT'] = response.body.jwt
+
+              //this.$router.push('/panel/search')
+            }
+          }, function (err) {
+            console.log('err', err)
+          })
+        }
     }
-  }
 };
 </script>
 <style>
