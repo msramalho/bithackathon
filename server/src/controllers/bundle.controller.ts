@@ -16,13 +16,17 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import { Bundle } from '../models';
-import { BundleRepository } from '../repositories';
+import { Bundle, Tag, BundleTagRelation } from '../models';
+import { BundleRepository, TagRepository, BundleTagRelationRepository } from '../repositories';
 
 export class BundleController {
   constructor(
     @repository(BundleRepository)
     public bundleRepository: BundleRepository,
+    @repository(TagRepository)
+    public tagRepository: TagRepository,
+    @repository(BundleTagRelationRepository)
+    public bundleTagRelationRepository: BundleTagRelationRepository,
   ) { }
 
   @post('/bundles', {
@@ -133,5 +137,21 @@ export class BundleController {
   })
   async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.bundleRepository.deleteById(id);
+  }
+
+  @get('/bundles/{id}/tags', {
+    responses: {
+      '200': {
+        description: 'Bundle model instance',
+        content: { 'application/json': { schema: { 'x-ts-type': String } } },
+      },
+    },
+  })
+  async findBundleTags(@param.path.string('id') id: string): Promise<string[]> {
+    return (await this.bundleTagRelationRepository.find({
+      where: {
+        bundleId: id
+      }
+    })).map(rel => rel.tagId);
   }
 }

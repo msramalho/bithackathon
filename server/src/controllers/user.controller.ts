@@ -21,6 +21,7 @@ import { UserRepository } from '../repositories';
 import { AuthInfo } from './user.controller.requests';
 import { sign } from 'jsonwebtoken';
 import { get as request_get, post as request_post } from "request-promise-native";
+import { authenticate } from '@loopback/authentication';
 
 
 export class Payload {
@@ -198,6 +199,7 @@ export class UserController {
     return await this.userRepository.findById(id);
   }
 
+  @authenticate('JWTStrategy')
   @patch('/users/{id}', {
     responses: {
       '204': {
@@ -207,7 +209,7 @@ export class UserController {
   })
   async updateById(
     @param.path.string('id') id: string,
-    @requestBody() user: User,
+    @requestBody() user: Partial<User>,
   ): Promise<void> {
     await this.userRepository.updateById(id, user);
   }
