@@ -16,20 +16,20 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import {Bundle} from '../models';
-import {BundleRepository} from '../repositories';
+import { Bundle } from '../models';
+import { BundleRepository } from '../repositories';
 
 export class BundleController {
   constructor(
     @repository(BundleRepository)
     public bundleRepository: BundleRepository,
-  ) {}
+  ) { }
 
   @post('/bundles', {
     responses: {
       '200': {
         description: 'Bundle model instance',
-        content: {'application/json': {schema: {'x-ts-type': Bundle}}},
+        content: { 'application/json': { schema: { 'x-ts-type': Bundle } } },
       },
     },
   })
@@ -41,7 +41,7 @@ export class BundleController {
     responses: {
       '200': {
         description: 'Bundle model count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -57,14 +57,14 @@ export class BundleController {
         description: 'Array of Bundle model instances',
         content: {
           'application/json': {
-            schema: {type: 'array', items: {'x-ts-type': Bundle}},
+            schema: { type: 'array', items: { 'x-ts-type': Bundle } },
           },
         },
       },
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Bundle)) filter?: Filter,
+    @param.query.object('filter', getFilterSchemaFor(Bundle)) filter?: Filter<Bundle>,
   ): Promise<Bundle[]> {
     return await this.bundleRepository.find(filter);
   }
@@ -73,7 +73,7 @@ export class BundleController {
     responses: {
       '200': {
         description: 'Bundle PATCH success count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -88,7 +88,7 @@ export class BundleController {
     responses: {
       '200': {
         description: 'Bundle model instance',
-        content: {'application/json': {schema: {'x-ts-type': Bundle}}},
+        content: { 'application/json': { schema: { 'x-ts-type': Bundle } } },
       },
     },
   })

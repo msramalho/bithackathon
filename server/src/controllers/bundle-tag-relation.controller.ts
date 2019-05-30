@@ -16,21 +16,21 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import {BundleTagRelation} from '../models';
-import {BundleTagRelationRepository} from '../repositories';
+import { BundleTagRelation } from '../models';
+import { BundleTagRelationRepository } from '../repositories';
 
 export class BundleTagRelationController {
   constructor(
     @repository(BundleTagRelationRepository)
     public bundleTagRelationRepository: BundleTagRelationRepository,
-  ) {}
+  ) { }
 
   @post('/bundle-tag-relations', {
     responses: {
       '200': {
         description: 'BundleTagRelation model instance',
         content: {
-          'application/json': {schema: {'x-ts-type': BundleTagRelation}},
+          'application/json': { schema: { 'x-ts-type': BundleTagRelation } },
         },
       },
     },
@@ -45,7 +45,7 @@ export class BundleTagRelationController {
     responses: {
       '200': {
         description: 'BundleTagRelation model count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -62,7 +62,7 @@ export class BundleTagRelationController {
         description: 'Array of BundleTagRelation model instances',
         content: {
           'application/json': {
-            schema: {type: 'array', items: {'x-ts-type': BundleTagRelation}},
+            schema: { type: 'array', items: { 'x-ts-type': BundleTagRelation } },
           },
         },
       },
@@ -70,7 +70,7 @@ export class BundleTagRelationController {
   })
   async find(
     @param.query.object('filter', getFilterSchemaFor(BundleTagRelation))
-    filter?: Filter,
+    filter?: Filter<BundleTagRelation>,
   ): Promise<BundleTagRelation[]> {
     return await this.bundleTagRelationRepository.find(filter);
   }
@@ -79,7 +79,7 @@ export class BundleTagRelationController {
     responses: {
       '200': {
         description: 'BundleTagRelation PATCH success count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -99,7 +99,7 @@ export class BundleTagRelationController {
       '200': {
         description: 'BundleTagRelation model instance',
         content: {
-          'application/json': {schema: {'x-ts-type': BundleTagRelation}},
+          'application/json': { schema: { 'x-ts-type': BundleTagRelation } },
         },
       },
     },

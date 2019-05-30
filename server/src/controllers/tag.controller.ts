@@ -16,20 +16,20 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import {Tag} from '../models';
-import {TagRepository} from '../repositories';
+import { Tag } from '../models';
+import { TagRepository } from '../repositories';
 
 export class TagController {
   constructor(
     @repository(TagRepository)
     public tagRepository: TagRepository,
-  ) {}
+  ) { }
 
   @post('/tags', {
     responses: {
       '200': {
         description: 'Tag model instance',
-        content: {'application/json': {schema: {'x-ts-type': Tag}}},
+        content: { 'application/json': { schema: { 'x-ts-type': Tag } } },
       },
     },
   })
@@ -41,7 +41,7 @@ export class TagController {
     responses: {
       '200': {
         description: 'Tag model count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -57,14 +57,14 @@ export class TagController {
         description: 'Array of Tag model instances',
         content: {
           'application/json': {
-            schema: {type: 'array', items: {'x-ts-type': Tag}},
+            schema: { type: 'array', items: { 'x-ts-type': Tag } },
           },
         },
       },
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Tag)) filter?: Filter,
+    @param.query.object('filter', getFilterSchemaFor(Tag)) filter?: Filter<Tag>,
   ): Promise<Tag[]> {
     return await this.tagRepository.find(filter);
   }
@@ -73,7 +73,7 @@ export class TagController {
     responses: {
       '200': {
         description: 'Tag PATCH success count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -88,7 +88,7 @@ export class TagController {
     responses: {
       '200': {
         description: 'Tag model instance',
-        content: {'application/json': {schema: {'x-ts-type': Tag}}},
+        content: { 'application/json': { schema: { 'x-ts-type': Tag } } },
       },
     },
   })
