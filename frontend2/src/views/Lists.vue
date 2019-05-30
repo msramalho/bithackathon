@@ -4,7 +4,8 @@
 
         <Product
         name="dog"
-        id="asd"
+        id="4949243"
+        :price='5.03'
         />
     </div>
 </template>
