@@ -25,13 +25,18 @@ import { get as request_get, post as request_post } from "request-promise-native
 
 export class Payload {
   user_id: string;
+  service_token: string;
 }
+
 
 export class UserController {
 
   static SONAE_API: string = 'https://api.sonae.pt';
 
-  static readonly TOKEN_EXPIRATION = '2h';
+  static API_KEY: string = '1tA7G25c4K4wUoR84hx7f0YA8LyIcDIk';
+
+  // JWT Expiration
+  static readonly TOKEN_EXPIRATION = '24h';
 
   // Default key to use for signing JWT
   static readonly DEFAULT_SECRET_KEY = 'sinceramente';
@@ -96,17 +101,28 @@ export class UserController {
     // Login at SONAE API
     // if successful, return jwt token and sonae's api token
 
-    // let res = await request_get(
-    //   UserController.SONAE_API + '/continenteOnline/authentication/login',
+    let res = await request_post(
+      UserController.SONAE_API + '/continenteOnline/authentication/login',
+      {
+        headers: {
+          "apikey": UserController.API_KEY,
+        },
+        json: {
+          "Email": authInfo.email,
+          "Password": authInfo.password,
+          "ContextKey": ""
+        },
+      }
+    );
+    console.log('Logged in as:');
+    console.log(res);
 
-    // );
-    // console.log(res);
-
+    let serviceToken: string = res.Context.ServiceAccessToken;
 
     // If credentials are OK, generate signed token with private shared key
     const payload: Payload = {
       user_id: storedUser.email,
-      // TODO add as needed
+      service_token: serviceToken,
     };
 
     const token = sign(payload, UserController.getSecretKey(), {
@@ -117,7 +133,7 @@ export class UserController {
       {},
       {
         jwtToken: token,
-        // serviceToken: serviceToken,
+        serviceToken: serviceToken,
         expiresIn: UserController.TOKEN_EXPIRATION,
       },
     );
