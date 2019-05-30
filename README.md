@@ -38,7 +38,7 @@ Data & APIs
 
 ### 0 - Continente Logistics Market Place (arranjar nome melhor)
  - Mobile app (MVP)
- - Users create a profile (name, number, photo?, address [could be multiple in the future], preferred contact [phone, insta, face, ...])
+ - Users create a profile (name, number, address [could be multiple in the future], preferred contact [phone, insta, face, ...])
  - A user can be a Poster or a Deliverer, ideally both
  - Posters create one (in the future more than one) shopping list
    - using the API endpoint `/search/freeText`
@@ -66,6 +66,7 @@ Data & APIs
  - Privacy issues -> same as uber/glovo, if it is too personal go there yourself
  - This should not transform into full time job for deliverers -> limit the amount of money someone can offer so that it covers opportunity cost but is not sustainable for people in other areas or just limit the amount of deliveries per day (eg. 3)
  - Should be a very clear idea and places to go from here (nutricional info, analytics, exapnding to other purchase segments[welss, bagga, ...], incorporating fee for continente, ... are not concerns but rather future ideas) so MVP is MVP
+ - Trust issues - people can associate social media profiles (not in MVP), there could be ratings, could only be used with contacts
  #### Concerns
  - Check Continente's current delivery system for online stuff
  - Deliverers have to accept the responsibility of the delivery (maybe try to make both parts accept that this is not a service but rather a favor)
