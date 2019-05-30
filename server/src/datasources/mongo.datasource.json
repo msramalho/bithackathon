@@ -1,0 +1,11 @@
+{
+  "name": "mongo",
+  "connector": "mongodb",
+  "url": "mongodb://mongo:27017/db",
+  "host": "mongo",
+  "port": 27017,
+  "user": "",
+  "password": "",
+  "database": "db",
+  "useNewUrlParser": true
+}
