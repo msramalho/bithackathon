@@ -11,6 +11,13 @@ export class User extends Entity {
   @property({
     type: 'string',
     required: true,
+    description: 'User\'s email, the same as the one used for Continente Online',
+  })
+  email: string;
+
+  @property({
+    type: 'string',
+    required: true,
   })
   name: string;
 
