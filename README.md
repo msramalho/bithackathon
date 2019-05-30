@@ -22,18 +22,57 @@ Data & APIs
 * 14:00 Opening Session
 * 15:00 Let the games begin! The clock is ticking...
 * You'll be visited by mentors during the afternoon.
-* 20:00 Dinner (Checkpoint)*
+* 20:00 Dinner (Checkpoint)
 #### Day 2 - Friday, May 31st Time
-* 08:30 Breakfast (Checkpoint)*
+* 08:30 Breakfast (Checkpoint)
 * 12:00 Lunch
 * 13:00 Intermediate evaluation
 * 15:00 TIME's UP! Deadline to submit presentations
 * 16:00 Showtime! It's your time to shine!
 * 17:30 Deliberation... or should we say Investment time!?
-* 18:00 And the winner is ******
+* 18:00 And the winner is...
 * 18:30 Farewell
+* 18:30 Luís Severo na FNAC Santa Catarina
 
 ## Ideas 
+
+### 0 - Continente Logistics Market Place (arranjar nome melhor)
+ - Mobile app (MVP)
+ - Users create a profile (name, number, photo?, address [could be multiple in the future], preferred contact [phone, insta, face, ...])
+ - A user can be a Poster or a Deliverer, ideally both
+ - Posters create one (in the future more than one) shopping list
+   - using the API endpoint `/search/freeText`
+   - Maybe: can see the nutritional values `/nutritionalInfo/nutritionalInfo`
+   - Associate one address to this list
+   - Associate a price they are willing to pay for someone to bring it home
+   - Specify the time they want the delivery to occur
+   - How much they are willing to pay for this (Can have a suggested value automatically)
+   - Further instructions for the deliverers (only show up when the delivery is confirmed by both)
+   - Send this list directly to a contact (by phone number) or post on "Marketplace"
+ - Deliverers can visit the Marketplace of shopping lists
+   - Filter by (Area, amount payed, delivery hours, contacts)
+   - Accept one list
+   - Chat with the Poster (contact information is only exchanged when the Poster accepts)
+   - Deliver and make money (or not if this is for a family member, friend)
+ #### Pros
+   - Continente is seen as fighting for sustainability
+   - Very good for customer loyalty (continente would be the first and therefore could steal clientèle)
+   - Could be used by friends
+   - Could be used for elders (by their sons, ...)
+   - People have incentives to put the lists (cheap, works even for small lists, can use as shopping list management)
+   - People have incentives to deliver (save fuel money, get along with neighbours)
+   - Can, after the hackathon, be incorporated into Continente's app easily
+ #### Solved Issues
+ - Privacy issues -> same as uber/glovo, if it is too personal go there yourself
+ - This should not transform into full time job for deliverers -> limit the amount of money someone can offer so that it covers opportunity cost but is not sustainable for people in other areas or just limit the amount of deliveries per day (eg. 3)
+ - 
+ #### Concerns
+ - Check Continente's current delivery system for online stuff
+ - Deliverers have to accept the responsibility of the delivery (maybe try to make both parts accept that this is not a service but rather a favor)
+ - Should be a very clear idea and places to go from here (nutricional info, analytics, incorporating comission for continente, ...) so MVP is MVP
+ - Mobile app so it will require some technical know-how in flutter or similar
+ - will require a database to store new information
+ - Design must be good
 
 ### 1 - CONtinente Assistant
 
