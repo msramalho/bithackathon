@@ -62,14 +62,14 @@ Data & APIs
    - People have incentives to put the lists (cheap, works even for small lists, can use as shopping list management)
    - People have incentives to deliver (save fuel money, get along with neighbours)
    - Can, after the hackathon, be incorporated into Continente's app easily
+   - touches all the [evaluation points](#how-to-win)
  #### Solved Issues
  - Privacy issues -> same as uber/glovo, if it is too personal go there yourself
  - This should not transform into full time job for deliverers -> limit the amount of money someone can offer so that it covers opportunity cost but is not sustainable for people in other areas or just limit the amount of deliveries per day (eg. 3)
- - 
+ - Should be a very clear idea and places to go from here (nutricional info, analytics, exapnding to other purchase segments[welss, bagga, ...], incorporating fee for continente, ... are not concerns but rather future ideas) so MVP is MVP
  #### Concerns
  - Check Continente's current delivery system for online stuff
  - Deliverers have to accept the responsibility of the delivery (maybe try to make both parts accept that this is not a service but rather a favor)
- - Should be a very clear idea and places to go from here (nutricional info, analytics, incorporating comission for continente, ...) so MVP is MVP
  - Mobile app so it will require some technical know-how in flutter or similar
  - will require a database to store new information
  - Design must be good
