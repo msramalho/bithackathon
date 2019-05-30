@@ -145,6 +145,30 @@ Data & APIs
 #### Continente Data Science (CDS)
  - Use APIs and Datasets to produce intreresting visualization techniques that Sonae likes to see
 
+### 5 - Social Bundle --- The chosen one
+- Allow social spread of lists of products from Continente. 
+- Everyone can creat a bundle list of products, usually related to building/cooking/making some bigger item
+- Lists are then shared in traditional influencing/social networks
+- Phases of development:
+
+#### 5.1 MVP
+* Lists
+    * Name/Title
+    * Picture
+    * Description
+    * Tags
+    * List of products, connecting their pictures, names, (price)?, from the Continente website
+* Bundlers can create lists
+* Shoppers can read lists
+* Shoppers can add full lists to their carts
+
+#### 5.2 Bundle Browsing
+* Users can search for lists, be it by tag or keywords in the title or description
+
+#### 5.3 Social expansion
+* Users can follow Bundlers and have their social feeds populated by lists created by the users they follow
+* Users are encouraged to share their lists and organize them neatly in order to be promoted/associated in categories.
+
 # How to Win
 The voting criteria used by our judges will be based on:
 1. Innovation level
