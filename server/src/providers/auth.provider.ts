@@ -3,6 +3,7 @@ import { Strategy } from 'passport';
 import {
   AuthenticationBindings,
   AuthenticationMetadata,
+  UserProfile
 } from '@loopback/authentication';
 import { UserRepository } from '../repositories';
 import { repository } from '@loopback/repository';
@@ -36,20 +37,31 @@ export class MyAuthStrategyProvider implements Provider<Strategy | undefined> {
           jwtFromRequest: ExtractJwt.fromHeader(MyAuthStrategyProvider.AUTH_HEADER),
           secretOrKey: UserController.getSecretKey(),
         },
-        (payload: Payload, done_callback) => {
-          this.userRepo.findOne({
-            where: {
-              email: payload.user_id
-            },
-          })
-            .then(user => {
-              if (user !== null) done_callback(null, { id: payload.user_id });
-              else done_callback(null, false);
-            });
-        },
+        this.verify
       );
     } else {
       return Promise.reject(`The strategy ${name} is not available.`);
     }
   }
+
+  verify(
+    payload: Payload,
+    done_callback: (error: any, user?: UserProfile | boolean, info?: any) => void
+  ) {
+    // find user by name & password
+    // call cb(null, false) when user not found
+    // call cb(null, user) when user is authenticated
+    this.userRepo.findById(payload.user_id)
+      .then(user => {
+        if (user !== null) {
+          done_callback(null, {
+            id: payload.user_id,
+            email: payload.user_email,
+          });
+        } else {
+          done_callback(null, false);
+        }
+      });
+  }
+
 }

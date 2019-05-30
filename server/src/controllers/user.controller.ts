@@ -26,6 +26,7 @@ import { authenticate } from '@loopback/authentication';
 
 export class Payload {
   user_id: string;
+  user_email: string;
   service_token: string;
 }
 
@@ -122,7 +123,8 @@ export class UserController {
 
     // If credentials are OK, generate signed token with private shared key
     const payload: Payload = {
-      user_id: storedUser.email,
+      user_id: storedUser._id!,
+      user_email: storedUser.email,
       service_token: serviceToken,
     };
 

@@ -18,6 +18,8 @@ import {
 } from '@loopback/rest';
 import { Bundle, Tag, BundleTagRelation } from '../models';
 import { BundleRepository, TagRepository, BundleTagRelationRepository } from '../repositories';
+import { authenticate, AuthenticationBindings, UserProfile } from '@loopback/authentication';
+import { inject } from '@loopback/context';
 
 export class BundleController {
   constructor(
@@ -27,8 +29,10 @@ export class BundleController {
     public tagRepository: TagRepository,
     @repository(BundleTagRelationRepository)
     public bundleTagRelationRepository: BundleTagRelationRepository,
+    @inject(AuthenticationBindings.CURRENT_USER) private user: UserProfile,
   ) { }
 
+  @authenticate('JWTStrategy')
   @post('/bundles', {
     responses: {
       '200': {
@@ -38,6 +42,7 @@ export class BundleController {
     },
   })
   async create(@requestBody() bundle: Bundle): Promise<Bundle> {
+    console.log(this.user.id);
     return await this.bundleRepository.create(bundle);
   }
 
