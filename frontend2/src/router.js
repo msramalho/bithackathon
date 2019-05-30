@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import AppHeader from "./layout/AppHeader";
+import AppHeaderLogout from "./layout/AppHeaderLogout";
 import AppFooter from "./layout/AppFooter";
 import Components from "./views/Components.vue";
 import Landing from "./views/Landing.vue";
@@ -18,7 +19,7 @@ export default new Router({
       path: "/",
       name: "components",
       components: {
-        header: AppHeader,
+        header: AppHeaderLogout,
         default: Components,
         footer: AppFooter
       }
@@ -27,7 +28,7 @@ export default new Router({
       path: "/landing",
       name: "landing",
       components: {
-        header: AppHeader,
+        header: AppHeaderLogout,
         default: Landing,
         footer: AppFooter
       }
@@ -36,17 +37,8 @@ export default new Router({
       path: "/login",
       name: "login",
       components: {
-        header: AppHeader,
+        header: AppHeaderLogout,
         default: Login,
-        footer: AppFooter
-      }
-    },
-    {
-      path: "/register",
-      name: "register",
-      components: {
-        header: AppHeader,
-        default: Register,
         footer: AppFooter
       }
     },
