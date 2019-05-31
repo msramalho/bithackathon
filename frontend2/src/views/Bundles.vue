@@ -22,11 +22,11 @@
                             <div class="bundle-list" :key="bundle.id" v-for="bundle in bundles">
                                 <router-link :to="`/bundle/${bundle._id}`">
                                     <card shadow class="shadow-lg--hover mt-5" style="border-radius: 20px;">
-                                        <div class="bundle d-flex px-3">
-                                            <div class="bundle-image">
+                                        <div class="bundle row">
+                                            <div class="bundle-image col-lg-5">
                                                 <img :src="bundle.img" :alt="bundle.title" class="img">
                                             </div>
-                                            <div class="text pl-4">
+                                            <div class="text  col-lg-7">
                                                 <h5 class="title text-primary">{{ bundle.title }}</h5>
                                                 <p class="text-darker">{{ bundle.description }}</p>
                                                 <span class="text-primary">Learn more</span>
@@ -79,6 +79,10 @@
 </script>
 
 <style>
+    .bundle {
+        display: grid;
+        text-align: center;
+    }
     .bundle-list:last-child {
         margin-bottom: 2em;
     }
@@ -94,12 +98,9 @@
         text-overflow: ellipsis;
     }
     .bundle img {
-        height: 12em;
-        width: 20em;
+        height: inherit;
+        width: inherit;
         object-fit: cover;
         white-space: nowrap;
-    }
-    .bundle-image {
-        width: 20em;
     }
 </style>
