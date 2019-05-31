@@ -7,10 +7,8 @@
             </div>
             <h6 class="prod-name text-primary text-uppercase">{{ name }}</h6>
             <p class="description mt-3">{{ price }}€</p>
-            <div align-self="center">
-                <base-button tag="a" href="#" type="primary">
-                    Add to List
-                </base-button>
+            <div class="icon">
+                <i class="fa fa-plus-circle"></i>
             </div>
         </card>
     </div>
@@ -22,11 +20,6 @@
             name: String,
             id: String,
             price: Number,
-        },
-        data() {
-            return {
-                description: 'ola',
-            }
         }
     }
 </script>
