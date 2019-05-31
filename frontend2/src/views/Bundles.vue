@@ -24,18 +24,20 @@
                                 </button>
                             </div>
                             <div class="bundle-list" :key="bundle.id" v-for="bundle in bundles">
-                                <card shadow class="shadow-lg--hover mt-5" style="border-radius: 20px;">
-                                    <div class="bundle d-flex px-3">
-                                        <div>
-                                            <img :src="bundle.img" alt="">
+                                <router-link :to="`/bundle/${bundle._id}`">
+                                    <card shadow class="shadow-lg--hover mt-5" style="border-radius: 20px;">
+                                        <div class="bundle d-flex px-3">
+                                            <div>
+                                                <img :src="bundle.img" alt="">
+                                            </div>
+                                            <div class="text pl-4">
+                                                <h5 class="title text-success">{{ bundle.title }}</h5>
+                                                <p>{{ bundle.description }}</p>
+                                                <span class="text-success">Learn more</span>
+                                            </div>
                                         </div>
-                                        <div class="text pl-4">
-                                            <h5 class="title text-success">{{ bundle.title }}</h5>
-                                            <p>{{ bundle.description }}</p>
-                                            <a href="#" class="text-success">Learn more</a>
-                                        </div>
-                                    </div>
-                                </card>
+                                    </card>
+                                </router-link>
                             </div>
                         </div>
                     </div>

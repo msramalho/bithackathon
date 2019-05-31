@@ -1,6 +1,6 @@
 <template>
     <div>
-        <card class="prod border-3" hover shadow>
+        <card class="prod border-3" hover shadow style="border-radius: 20px;">
             <div class="prod-img">
                 <img class="img-fluid" :src="'https://media.continente.pt/Sonae.eGlobal.Presentation.Web.Media/media.axd?resourceSearchType=2&resource=ProductId=' + id + '(eCsf$RetekProductCatalog$MegastoreContinenteOnline$Continente)&siteId=1&channelId=1&width=180&height=170&defaultOptions=1'"/>
             </div>
