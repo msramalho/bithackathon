@@ -16,20 +16,20 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import {FollowRelation} from '../models';
-import {FollowRelationRepository} from '../repositories';
+import { FollowRelation } from '../models';
+import { FollowRelationRepository } from '../repositories';
 
 export class FollowRelationController {
   constructor(
     @repository(FollowRelationRepository)
-    public followRelationRepository : FollowRelationRepository,
-  ) {}
+    public followRelationRepository: FollowRelationRepository,
+  ) { }
 
   @post('/follow-relations', {
     responses: {
       '200': {
         description: 'FollowRelation model instance',
-        content: {'application/json': {schema: {'x-ts-type': FollowRelation}}},
+        content: { 'application/json': { schema: { 'x-ts-type': FollowRelation } } },
       },
     },
   })
@@ -41,7 +41,7 @@ export class FollowRelationController {
     responses: {
       '200': {
         description: 'FollowRelation model count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -57,14 +57,14 @@ export class FollowRelationController {
         description: 'Array of FollowRelation model instances',
         content: {
           'application/json': {
-            schema: {type: 'array', items: {'x-ts-type': FollowRelation}},
+            schema: { type: 'array', items: { 'x-ts-type': FollowRelation } },
           },
         },
       },
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(FollowRelation)) filter?: Filter,
+    @param.query.object('filter', getFilterSchemaFor(FollowRelation)) filter?: Filter<FollowRelation>,
   ): Promise<FollowRelation[]> {
     return await this.followRelationRepository.find(filter);
   }
@@ -73,7 +73,7 @@ export class FollowRelationController {
     responses: {
       '200': {
         description: 'FollowRelation PATCH success count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -88,7 +88,7 @@ export class FollowRelationController {
     responses: {
       '200': {
         description: 'FollowRelation model instance',
-        content: {'application/json': {schema: {'x-ts-type': FollowRelation}}},
+        content: { 'application/json': { schema: { 'x-ts-type': FollowRelation } } },
       },
     },
   })
