@@ -31,11 +31,25 @@
                 </div>
             </div>
         </section>
+        <modal :show.sync="modal">
+            <h6 slot="header" class="modal-title" id="modal-title-default">Sucesso</h6>
+            <p>Os produtos do bundle foram adicionados ao carrinho!</p>
+            <p class="text-center">
+                <span><i class="fa fa-check fa-5x text-success"></i></span>
+            </p>
+            <template slot="footer">
+                    <a href="https://www.continente.pt/pt-pt/private/Pages/checkout.aspx#/1" target="_blank">
+                        <base-button type="primary">Ver o Carrinho <i class="fa fa-shopping-cart"></i></base-button>
+                    </a>
+                    <base-button type="link" class="ml-auto" @click="modal = false">Fechar</base-button>
+            </template>
+        </modal>
     </div>
 </template>
 
 <script>
     import Lists from './Lists'
+    import Modal from '../components/Modal'
     function parse_arr(arr_arr) {
         return arr_arr.map(arr_to_obj)
     }
@@ -52,14 +66,16 @@
             lists: Array
         },
         components: {
-            Lists
+            Lists,
+            Modal
         },
         data() {
             return {
                 bundle: [],
                 title: 'John Doe\'s Bundle',
                 description: 'This is a description',
-                img: ''
+                img: '',
+                modal: false
             }
         },
         mounted() {
@@ -111,15 +127,14 @@
                         "NumberOfItemsToReturn": 10
                     }
                 })
-
                 let body = {
                     "Products": Products,
                     "ContextKey": "Continente"
                 }
-
                 console.log(body);
                 this.$continenteAPI.post('/continenteOnline/shopping/addProducts', body).then((response) => {
                     console.log('YAY')
+                    this.modal = true;
                 });
             }
         }
