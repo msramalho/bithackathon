@@ -18,7 +18,7 @@
             </div>
 
             <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-                <router-link to="/login" class="nav-link"><i class="ni ni-air-baloon"></i>Login</router-link>
+                <router-link to="/login" class="nav-link"><i class="fa fa-sign-in"></i>Login</router-link>
             </ul>
         </base-nav>
     </header>
