@@ -71,7 +71,7 @@ export default {
 
       methods: {
         login: function (e) {
-          this.$http.post('/users/login', {
+          this.$localAPI.post('/users/login', {
             password: this.password,
             email: this.email
           }).then((response) => {
@@ -87,10 +87,10 @@ export default {
               this.$session.set('serviceToken', serviceToken)
 
               // Token for Continente's API
-              this.axios.defaults.headers.common['Authorization'] = 'Bearer ' + serviceToken;
+              this.$continenteAPI.defaults.headers.common['Authorization'] = 'Bearer ' + serviceToken;
 
               // Token for our API
-              this.axios.defaults.headers.common['JWT'] = jwtToken;
+              this.$localAPI.defaults.headers.common['JWT'] = jwtToken;
 
               console.log('Logged in! (?)');
               this.$router.push('/profile');

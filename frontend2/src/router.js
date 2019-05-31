@@ -9,6 +9,7 @@ import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
 import Lists from "./views/Lists.vue";
+import Bundle from "./views/Bundle.vue";
 
 Vue.use(Router);
 
@@ -59,7 +60,16 @@ export default new Router({
         default: Lists,
         footer: AppFooter
       }
-    }
+    },
+    {
+      path: "/bundle/:id",
+      name: "bundle",
+      components: {
+        header: AppHeader,
+        default: Bundle,
+        footer: AppFooter
+      }
+    }, 
   ],
   scrollBehavior: to => {
     if (to.hash) {
