@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="section-profile-cover section-shaped my-0">
+        <section class="section-profile-cover section-shaped my-0" :style="'background-image: url(\'' +  this.img + '\') !important;'">
             <div class="shape shape-style-5 shape-primary shape-skew alpha-4">
                 <span></span>
                 <span></span>
@@ -59,6 +59,7 @@
                 bundle: [],
                 title: 'John Doe\'s Bundle',
                 description: 'This is a description',
+                img: ''
             }
         },
         mounted() {
@@ -67,6 +68,8 @@
                     this.bundle = response.data.products;
                     this.title = response.data.title;
                     this.description = response.data.description;
+                    this.img = response.data.img;
+                    console.log('img is ' + response.data.img);
                     let products = response.data.products.join(';');
                     console.log(products)
                     this.$continenteAPI.post('/continenteOnline/search/productId', {
@@ -112,4 +115,5 @@ button.add-all *{
 button.add-all > span > i {
     padding-left: 1rem;
 }
+
 </style>
