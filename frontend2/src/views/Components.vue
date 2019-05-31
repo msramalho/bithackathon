@@ -1,16 +1,26 @@
 <template>
-    <div>
-        <hero></hero>
-        <basic-elements></basic-elements>
-        <inputs></inputs>
-        <custom-controls></custom-controls>
-        <navigation></navigation>
-        <javascript-components></javascript-components>
-        <icons></icons>
-        <examples></examples>
-        <download-section></download-section>
-        <carousel></carousel>
-    </div>
+    <section class="section section-shaped section-lg my-0">
+        <div class="shape shape-style-1 bg-gradient-default">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container pt-lg-md">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <img src="img/icons/logo/liga2_grande_branco.png"
+                    height="200px;" />
+                    <h4><a>LIGAndo </a></h4>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 <script>
 import Hero from "./components/Hero";

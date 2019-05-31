@@ -19,8 +19,8 @@
                             <div class="row">
                                 <h1 class="col-lg-9 col-md-8 mt-4">{{ this.title }}</h1>
                                 <button type="button" class="add-all col-lg-2 col-md-3 btn btn-default mt-lg-4 ml-lg-5">
-                                    <span> Add All  </span>
-                                    <span class="icon"><i class="fa fa-plus-circle"></i></span>
+                                    <span> Adicionar   </span>
+                                    <i class="fas fa-shopping-cart"></i>
                                 </button>
                             </div>
                             <p class="lead">

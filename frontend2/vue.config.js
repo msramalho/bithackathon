@@ -11,10 +11,10 @@ module.exports = {
   },
   pwa: {
     name: 'Vue Argon Design',
-    themeColor: '#172b4d',
-    msTileColor: '#172b4d',
+    themeColor: '#d32f2f',
+    msTileColor: '#d32f2f',
     appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: '#172b4d'
+    appleMobileWebAppStatusBarStyle: '#d32f2f'
   },
   css: {
     // Enable CSS source maps.
