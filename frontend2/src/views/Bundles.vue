@@ -23,13 +23,13 @@
                                 <router-link :to="`/bundle/${bundle._id}`">
                                     <card shadow class="shadow-lg--hover mt-5" style="border-radius: 20px;">
                                         <div class="bundle d-flex px-3">
-                                            <div>
-                                                <img :src="bundle.img" alt="">
+                                            <div class="bundle-image">
+                                                <img :src="bundle.img" :alt="bundle.title" class="img">
                                             </div>
                                             <div class="text pl-4">
-                                                <h5 class="title text-success">{{ bundle.title }}</h5>
-                                                <p>{{ bundle.description }}</p>
-                                                <span class="text-success">Learn more</span>
+                                                <h5 class="title text-primary">{{ bundle.title }}</h5>
+                                                <p class="text-darker">{{ bundle.description }}</p>
+                                                <span class="text-primary">Learn more</span>
                                             </div>
                                         </div>
                                     </card>
@@ -79,16 +79,27 @@
 </script>
 
 <style>
-.bundle-list:last-child {
-    margin-bottom: 2em;
-}
-.bundle div.text {
-    display: grid;
-}
-.bundle div.text * {
-    margin: 1em;
-}
-.bundle img {
-    height: 12em;
-}
+    .bundle-list:last-child {
+        margin-bottom: 2em;
+    }
+    .bundle div.text {
+        display: grid;
+    }
+    .bundle div.text * {
+        margin: 0.5em;
+    }
+    .bundle div.text p {
+        height: 5em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .bundle img {
+        height: 12em;
+        width: 20em;
+        object-fit: cover;
+        white-space: nowrap;
+    }
+    .bundle-image {
+        width: 20em;
+    }
 </style>

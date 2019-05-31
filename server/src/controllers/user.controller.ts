@@ -21,7 +21,8 @@ import { UserRepository } from '../repositories';
 import { AuthInfo } from './user.controller.requests';
 import { sign } from 'jsonwebtoken';
 import { get as request_get, post as request_post } from "request-promise-native";
-import { authenticate } from '@loopback/authentication';
+import { UserProfile, AuthenticationBindings, authenticate } from '@loopback/authentication';
+import { inject } from '@loopback/context';
 
 
 export class Payload {
@@ -51,6 +52,7 @@ export class UserController {
   constructor(
     @repository(UserRepository)
     public userRepository: UserRepository,
+    @inject(AuthenticationBindings.CURRENT_USER, { optional: true }) private user: UserProfile,
   ) { }
 
   static getSecretKey(): string {
@@ -174,6 +176,19 @@ export class UserController {
     return await this.userRepository.find(filter);
   }
 
+  @authenticate('JWTStrategy')
+  @get('/users/myProfile', {
+    responses: {
+      '200': {
+        description: 'User model instance',
+        content: { 'application/json': { schema: { 'x-ts-type': User } } },
+      },
+    },
+  })
+  async getMyProfile(): Promise<User> {
+    return await this.userRepository.findById(this.user.id);
+  }
+
   @patch('/users', {
     responses: {
       '200': {
@@ -201,7 +216,7 @@ export class UserController {
     return await this.userRepository.findById(id);
   }
 
-  // @authenticate('JWTStrategy')
+  @authenticate('JWTStrategy')
   @patch('/users/{id}', {
     responses: {
       '204': {
