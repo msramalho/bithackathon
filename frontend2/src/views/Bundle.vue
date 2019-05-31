@@ -18,10 +18,7 @@
                         <div class="list">
                             <div class="row">
                                 <h1 class="col-lg-9 col-md-8 mt-4">{{ this.title }}</h1>
-                                <button type="button" class="add-all col-lg-2 col-md-3 btn btn-default mt-lg-4 ml-lg-5">
-                                    <span> Adicionar   </span>
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
+                                <base-button type="default" class="add-all col-lg-2 col-md-3 btn btn-default mt-lg-4 ml-lg-5">Adicionar <i class="fa fa-fw fa-shopping-cart"></i></base-button>
                             </div>
                             <p class="lead">
                                 {{ this.description }}
@@ -65,9 +62,7 @@
             }
         },
         mounted() {
-            console.log('olaaa');
             this.$localAPI.get('/bundles/' + this.$route.params.id).then((response) => {
-                console.log('cenas')
                 if (response.status == 200) {
                     this.bundle = response.data.products;
                     this.title = response.data.title;
@@ -82,7 +77,8 @@
                             "ProductCode",
                             "WebDisplayName",
                             "OriginalListPrice",
-                            "Brand"
+                            "Brand",
+                            "Description"
                         ],
                         "ContentTypes": [
                             "Product"

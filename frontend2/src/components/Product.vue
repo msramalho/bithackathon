@@ -5,12 +5,14 @@
                 <img class="img-fluid" :src="'https://media.continente.pt/Sonae.eGlobal.Presentation.Web.Media/media.axd?resourceSearchType=2&resource=ProductId=' + id + '(eCsf$RetekProductCatalog$MegastoreContinenteOnline$Continente)&siteId=1&channelId=1&width=180&height=170&defaultOptions=1'"/>
             </div>
             <h6 class="prod-name text-primary text-uppercase">{{ name }}</h6>
-            <p class="description mt-3">{{ price }}€</p>
-                <div class="row justify-content-md-center">
-                <button type="button" class="float-left add-all btn btn-default">
-                    <span>Add</span>
-                    <span class="icon"><i class="fa fa-plus-circle"></i></span>
-                </button>
+            <p>{{ description }}</p>
+            <div class="d-flex justify-content-between">
+                <div>
+                <base-button type="link" size="sm"><i class="fa fa-2x fa-plus-circle"></i></base-button>
+                </div>
+                <div>
+                <span class="text-right lead">{{ price }}€</span>
+                </div>
             </div>
         </card>
     </div>
@@ -23,6 +25,7 @@
             id: String,
             brand: String,
             price: String,
+            description: String,
         }
     }
 </script>
@@ -44,8 +47,5 @@
         overflow: hidden;
         height: 5em;
         line-height: 1.8em;
-    }
-    .description {
-        text-align: right;
     }
 </style>

@@ -3,7 +3,7 @@
     <section>
       <div class="row">
         <div :key="product.ProductCode" v-for="product in products" class="product col-lg-3 col-md-6">
-          <Product class="mb-4" :name="product.WebDisplayName" :brand="product.Brand" :price="product.OriginalListPrice" :id="product.ProductCode"></Product>
+          <Product class="mb-4" :name="product.WebDisplayName" :brand="product.Brand" :price="product.OriginalListPrice" :id="product.ProductCode" :description="product.Description"></Product>
         </div>
       </div>
     </section>
