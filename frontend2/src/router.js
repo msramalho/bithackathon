@@ -10,6 +10,7 @@ import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
 import Lists from "./views/Lists.vue";
 import Bundle from "./views/Bundle.vue";
+import Bundles from "./views/Bundles.vue";
 
 Vue.use(Router);
 
@@ -53,11 +54,11 @@ export default new Router({
       }
     },
     {
-      path: "/lists",
-      name: "lists",
+      path: "/bundles",
+      name: "bundles",
       components: {
         header: AppHeader,
-        default: Lists,
+        default: Bundles,
         footer: AppFooter
       }
     },

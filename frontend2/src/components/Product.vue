@@ -6,7 +6,7 @@
             </div>
             <h6 class="prod-name text-primary text-uppercase">{{ name }}</h6>
             <p class="description mt-3">{{ price }}€</p>
-            <div class="row justify-content-md-center">
+                <div class="row justify-content-md-center">
                 <button type="button" class="float-left add-all btn btn-default">
                     <span>Add</span>
                     <span class="icon"><i class="fa fa-plus-circle"></i></span>

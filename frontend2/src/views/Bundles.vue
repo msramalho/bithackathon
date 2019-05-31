@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="section-profile-cover section-shaped my-0">
-            <div class="shape shape-style-5 shape-primary shape-skew alpha-4">
+            <div class="shape shape-style-3 shape-primary shape-skew alpha-4">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -26,8 +26,21 @@
                             <p class="lead">
                                 {{ this.description }}
                             </p>
-                            <div>
-                                <Lists :products="bundle"></Lists>
+                            <div :key="bundle.id" v-for="bundle in bundles" >
+                                <card shadow class="shadow-lg--hover mt-5">
+                                    <div class="d-flex px-3">
+                                        <div>
+                                            <icon name="ni ni-satisfied" gradient="success" color="white" shadow
+                                                rounded></icon>
+                                        </div>
+                                        <div class="pl-4">
+                                            <h5 class="title text-success">Awesome Support</h5>
+                                            <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
+                                                every summer, and that process will continue whatever happens.</p>
+                                            <a href="#" class="text-success">Learn more</a>
+                                        </div>
+                                    </div>
+                                </card>
                             </div>
                         </div>
                     </div>
@@ -59,44 +72,17 @@
         },
         data() {
             return {
-                bundle: [],
+                bundles: [],
                 title: 'John Doe\'s Bundle',
                 description: 'This is a description',
             }
         },
         mounted() {
             console.log('olaaa');
-            this.$localAPI.get('/bundles/' + this.$route.params.id).then((response) => {
+            this.$localAPI.get('/bundles/',{withCredentials: true}).then((response) => {
                 console.log('cenas')
                 if (response.status == 200) {
-                    this.bundle = response.data.products;
-                    this.title = response.data.title;
-                    this.description = response.data.description;
-                    let products = response.data.products.join(';');
-                    console.log(products)
-                    this.$continenteAPI.post('/continenteOnline/search/productId', {
-                        "ProductId": products,
-                        "NumberOfItemsToReturn": 10,
-                        "CurrentPage": 1,
-                        "PropertiesToReturn": [
-                            "ProductCode",
-                            "WebDisplayName",
-                            "OriginalListPrice",
-                            "Brand"
-                        ],
-                        "ContentTypes": [
-                            "Product"
-                        ],
-                        "ContextKey": "Continente"
-                    }).then((response) => {
-                        console.log('OAAAA');
-                        console.log(response);
-                        console.log(response.data.SearchResultItems);
-                        this.bundle = parse_arr(response.data.SearchResultItems);
-                    }).catch((error) => {
-                        console.log('erro')
-                        console.log(error)
-                    })
+                    console.log(response.data)
                 }
             })
         }
