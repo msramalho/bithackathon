@@ -60,49 +60,46 @@
 import Vue from 'vue'
 
 export default {
-
-
-			data () {
-				return {
-                    email: '',
-                    password: '',
-				}
-			},
-
-      methods: {
-        login: function (e) {
-          this.$localAPI.post('/users/login', {
-            password: this.password,
-            email: this.email
-          }).then((response) => {
-
-              console.log(response);
-            if (response.status === 200 && 'jwtToken' in response.data && 'serviceToken' in response.data) {
-                console.log('inside');
-
-                let { jwtToken, serviceToken } = response.data;
-
-              this.$session.start()
-              this.$session.set('jwtToken', jwtToken)
-              this.$session.set('serviceToken', serviceToken)
-
-              // Token for Continente's API
-              this.$continenteAPI.defaults.headers.common['Authorization'] = 'Bearer ' + serviceToken;
-
-              // Token for our API
-              this.$localAPI.defaults.headers.common['JWT'] = jwtToken;
-
-              console.log('Logged in! (?)');
-              this.$router.push('/profile');
-            }
-          }, function (err) {
-            console.log('err', err)
-          })
-
-          e.preventDefault();
-          
-        }
+  data () {
+    return {
+        email: '',
+        password: '',
     }
+  },
+  methods: {
+    login: function (e) {
+      this.$localAPI.post('/users/login', {
+        password: this.password,
+        email: this.email
+      }).then((response) => {
+
+          console.log(response);
+        if (response.status === 200 && 'jwtToken' in response.data && 'serviceToken' in response.data) {
+            console.log('inside');
+
+            let { jwtToken, serviceToken } = response.data;
+
+          this.$session.start()
+          this.$session.set('jwtToken', jwtToken)
+          this.$session.set('serviceToken', serviceToken)
+
+          // Token for Continente's API
+          this.$continenteAPI.defaults.headers.common['Authorization'] = 'Bearer ' + serviceToken;
+
+          // Token for our API
+          this.$localAPI.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken;
+
+          console.log('Logged in! (?)');
+          this.$router.push('/profile');
+        }
+      }, function (err) {
+        console.log('err', err)
+      })
+
+      e.preventDefault();
+      
+    }
+  }
 };
 </script>
 <style>
