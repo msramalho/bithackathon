@@ -17,7 +17,10 @@
                     <div class="px-4">
                         <div class="list">
                             <div class="row">
-                                <h1 class="col-lg-9 col-md-8 mt-4">{{ this.title }}</h1>
+                                <h1 class="col-lg-9 col-md-8 mt-4">{{ this.title }}<br>
+                                <small>{{ totalPrice }}€</small>
+                                </h1>
+
                                 <base-button @click="addBundleToCart" type="default" class="add-all col-lg-2 col-md-3 btn btn-default mt-lg-4 ml-lg-5">Adicionar <i class="fa fa-fw fa-shopping-cart"></i></base-button>
                             </div>
                             <p class="lead">
@@ -136,6 +139,17 @@
                     console.log('YAY')
                     this.modal = true;
                 });
+            }
+        },
+        computed: {
+            totalPrice: function() {
+                console.log('olaaaa')
+                let sum = 0.0
+                this.bundle.forEach((elem) => {
+                    console.log(elem)
+                    sum += parseFloat(elem.OriginalListPrice)
+                })
+                return sum;
             }
         }
     }
