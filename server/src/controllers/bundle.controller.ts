@@ -29,7 +29,7 @@ export class BundleController {
     public tagRepository: TagRepository,
     @repository(BundleTagRelationRepository)
     public bundleTagRelationRepository: BundleTagRelationRepository,
-    @inject(AuthenticationBindings.CURRENT_USER) private user: UserProfile,
+    @inject(AuthenticationBindings.CURRENT_USER, { optional: true }) private user: UserProfile,
   ) { }
 
   @authenticate('JWTStrategy')

@@ -20,7 +20,7 @@ export class MyAuthStrategyProvider implements Provider<Strategy | undefined> {
   constructor(
     @inject(AuthenticationBindings.METADATA)
     private metadata: AuthenticationMetadata,
-    @repository(UserRepository) protected userRepo: UserRepository,
+    @repository(UserRepository) protected userRepository: UserRepository,
   ) { }
 
   value(): ValueOrPromise<Strategy | undefined> {
@@ -34,10 +34,11 @@ export class MyAuthStrategyProvider implements Provider<Strategy | undefined> {
       return new JWTStrategy(
         {
           passReqToCallback: false,
-          jwtFromRequest: ExtractJwt.fromHeader(MyAuthStrategyProvider.AUTH_HEADER),
+          // jwtFromRequest: ExtractJwt.fromHeader(MyAuthStrategyProvider.AUTH_HEADER),
+          jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
           secretOrKey: UserController.getSecretKey(),
         },
-        this.verify
+        this.verify.bind(this)
       );
     } else {
       return Promise.reject(`The strategy ${name} is not available.`);
@@ -46,12 +47,13 @@ export class MyAuthStrategyProvider implements Provider<Strategy | undefined> {
 
   verify(
     payload: Payload,
-    done_callback: (error: any, user?: UserProfile | boolean, info?: any) => void
+    done_callback: (err: any | null, user?: UserProfile | false) => void
   ) {
     // find user by name & password
     // call cb(null, false) when user not found
     // call cb(null, user) when user is authenticated
-    this.userRepo.findById(payload.user_id)
+
+    this.userRepository.findById(payload.user_id)
       .then(user => {
         if (user !== null) {
           done_callback(null, {
@@ -63,5 +65,17 @@ export class MyAuthStrategyProvider implements Provider<Strategy | undefined> {
         }
       });
   }
+
+  // verify(
+  //   username: string,
+  //   password: string,
+  //   cb: (err: Error | null, user?: UserProfile | false) => void,
+  // ) {
+  //   console.log('CALLING WRONG VERIFY.....');
+  //   cb(null, false);
+  //   // find user by name & password
+  //   // call cb(null, false) when user not found
+  //   // call cb(null, user) when user is authenticated
+  // }
 
 }

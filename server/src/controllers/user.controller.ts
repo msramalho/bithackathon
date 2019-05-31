@@ -201,7 +201,7 @@ export class UserController {
     return await this.userRepository.findById(id);
   }
 
-  @authenticate('JWTStrategy')
+  // @authenticate('JWTStrategy')
   @patch('/users/{id}', {
     responses: {
       '204': {
