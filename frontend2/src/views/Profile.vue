@@ -61,45 +61,46 @@
         </section>
     </div>
 </template>
+
 <script>
-import Vue from 'vue'
-
-export default {
-    data() {
-        return {
-            id: null,
-            name: '',
-            description: '',
-            age: 27,
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLDiq-PAumHiPE0OKOxdUGo_-Y-AEw0-RYNc2XF1sVB8bJU5rj',
-            followers: [],
-            bundles: [],
-        }
-    },
-
-    mounted() {
-        this.$localAPI.get('/users/myProfile').then((res) => {
-            console.log(res);
-            if (res.status == 200) {
-                this.id = res.data._id;
-                this.name = res.data.name;
-                this.description = res.data.description;
-                if (res.data.img !== undefined && res.data.img != '') {
-                    this.img = res.data.img;
+    import Vue from 'vue'
+    export default {
+        data() {
+            return {
+                id: null,
+                name: '',
+                description: '',
+                age: 27,
+                img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLDiq-PAumHiPE0OKOxdUGo_-Y-AEw0-RYNc2XF1sVB8bJU5rj',
+                followers: [],
+                bundles: [],
+            }
+        },
+        mounted() {
+            this.$localAPI.get('/users/myProfile').then((res) => {
+                console.log(res);
+                if (res.status == 200) {
+                    this.id = res.data._id;
+                    this.name = res.data.name;
+                    this.description = res.data.description;
+                    if (res.data.img !== undefined && res.data.img != '') {
+                        this.img = res.data.img;
+                    }
                 }
-            }
-        });
-
-        if (this.id === null) return;
-        this.$localAPI.get('/follow-relations?filter[where][followee]=' + this.id)
-        .then((res) => {
-            console.log(res);
-            if (res.status == 200) {
-                this.followers = res.data.map(el => el.follower);
-            }
-        });
-    },
-};
+            }).then(() => {
+                if (this.id === null) return;
+                this.$localAPI.get('/follow-relations?filter[where][followee]=' + this.id)
+                    .then((res) => {
+                        console.log(res);
+                        if (res.status == 200) {
+                            this.followers = res.data.map(el => el.follower);
+                        }
+                    });
+            })
+        },
+    };
 </script>
+
 <style>
+
 </style>
