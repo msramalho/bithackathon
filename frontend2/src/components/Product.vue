@@ -1,9 +1,8 @@
 <template>
     <div>
-        <card class="prod border-3" hover shadow body-classes="py-5">
+        <card class="prod border-3" hover shadow>
             <div class="prod-img">
-                <img class="img-fluid" :src="'https://media.continente.pt/Sonae.eGlobal.Presentation.Web.Media/media.axd?resourceSearchType=2&resource=ProductId=' + id + '(eCsf$RetekProductCatalog$MegastoreContinenteOnline$Continente)&siteId=1&channelId=1&width=180&height=170&defaultOptions=1'"
-                />
+                <img class="img-fluid" :src="'https://media.continente.pt/Sonae.eGlobal.Presentation.Web.Media/media.axd?resourceSearchType=2&resource=ProductId=' + id + '(eCsf$RetekProductCatalog$MegastoreContinenteOnline$Continente)&siteId=1&channelId=1&width=180&height=170&defaultOptions=1'"/>
             </div>
             <h6 class="prod-name text-primary text-uppercase">{{ name }}</h6>
             <p class="description mt-3">{{ price }}€</p>
