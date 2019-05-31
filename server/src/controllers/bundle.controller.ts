@@ -16,15 +16,23 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import { Bundle } from '../models';
-import { BundleRepository } from '../repositories';
+import { Bundle, Tag, BundleTagRelation } from '../models';
+import { BundleRepository, TagRepository, BundleTagRelationRepository } from '../repositories';
+import { authenticate, AuthenticationBindings, UserProfile } from '@loopback/authentication';
+import { inject } from '@loopback/context';
 
 export class BundleController {
   constructor(
     @repository(BundleRepository)
     public bundleRepository: BundleRepository,
+    @repository(TagRepository)
+    public tagRepository: TagRepository,
+    @repository(BundleTagRelationRepository)
+    public bundleTagRelationRepository: BundleTagRelationRepository,
+    @inject(AuthenticationBindings.CURRENT_USER) private user: UserProfile,
   ) { }
 
+  @authenticate('JWTStrategy')
   @post('/bundles', {
     responses: {
       '200': {
@@ -34,6 +42,7 @@ export class BundleController {
     },
   })
   async create(@requestBody() bundle: Bundle): Promise<Bundle> {
+    console.log(this.user.id);
     return await this.bundleRepository.create(bundle);
   }
 
@@ -133,5 +142,21 @@ export class BundleController {
   })
   async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.bundleRepository.deleteById(id);
+  }
+
+  @get('/bundles/{id}/tags', {
+    responses: {
+      '200': {
+        description: 'Bundle model instance',
+        content: { 'application/json': { schema: { 'x-ts-type': String } } },
+      },
+    },
+  })
+  async findBundleTags(@param.path.string('id') id: string): Promise<string[]> {
+    return (await this.bundleTagRelationRepository.find({
+      where: {
+        bundleId: id
+      }
+    })).map(rel => rel.tagId);
   }
 }

@@ -21,10 +21,12 @@ import { UserRepository } from '../repositories';
 import { AuthInfo } from './user.controller.requests';
 import { sign } from 'jsonwebtoken';
 import { get as request_get, post as request_post } from "request-promise-native";
+import { authenticate } from '@loopback/authentication';
 
 
 export class Payload {
   user_id: string;
+  user_email: string;
   service_token: string;
 }
 
@@ -121,7 +123,8 @@ export class UserController {
 
     // If credentials are OK, generate signed token with private shared key
     const payload: Payload = {
-      user_id: storedUser.email,
+      user_id: storedUser._id!,
+      user_email: storedUser.email,
       service_token: serviceToken,
     };
 
@@ -198,6 +201,7 @@ export class UserController {
     return await this.userRepository.findById(id);
   }
 
+  @authenticate('JWTStrategy')
   @patch('/users/{id}', {
     responses: {
       '204': {
@@ -207,7 +211,7 @@ export class UserController {
   })
   async updateById(
     @param.path.string('id') id: string,
-    @requestBody() user: User,
+    @requestBody() user: Partial<User>,
   ): Promise<void> {
     await this.userRepository.updateById(id, user);
   }
