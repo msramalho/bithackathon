@@ -16,7 +16,13 @@
                 <div class="card shadow" no-body>
                     <div class="px-4">
                         <div class="list">
-                            <h1 class="mt-4">{{ this.title }}</h1>
+                            <div class="row">
+                                <h1 class="col-lg-9 col-md-8 mt-4">{{ this.title }}</h1>
+                                <button type="button" class="add-all col-lg-2 col-md-3 btn btn-default">
+                                    <span> Add All </span>
+                                    <span class="icon"><i class="fa fa-plus-circle"></i></span>
+                                </button>
+                            </div>
                             <p class="lead">
                                 {{ this.description }}
                             </p>
@@ -97,8 +103,17 @@
     }
 </script>
 
-
-
 <style>
+button.add-all {
+    height: 50%;
+    align-self: right;
+    margin: 1rem;
+}
+button.add-all *{
+    vertical-align: middle;
+}
 
+button.add-all > span > i {
+    padding-left: 1rem;
+}
 </style>
