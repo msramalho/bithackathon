@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="section-profile-cover section-shaped my-0">
+        <section class="section-profile-cover section-shaped my-0" :style="'background-image: url(\'' +  this.img + '\') !important;'">
             <div class="shape shape-style-5 shape-primary shape-skew alpha-4">
                 <span></span>
                 <span></span>
@@ -18,7 +18,7 @@
                         <div class="list">
                             <div class="row">
                                 <h1 class="col-lg-9 col-md-8 mt-4">{{ this.title }}</h1>
-                                <base-button type="default" class="add-all col-lg-2 col-md-3 btn btn-default mt-lg-4 ml-lg-5">Adicionar <i class="fa fa-fw fa-shopping-cart"></i></base-button>
+                                <base-button @click="addBundleToCart" type="default" class="add-all col-lg-2 col-md-3 btn btn-default mt-lg-4 ml-lg-5">Adicionar <i class="fa fa-fw fa-shopping-cart"></i></base-button>
                             </div>
                             <p class="lead">
                                 {{ this.description }}
@@ -59,6 +59,7 @@
                 bundle: [],
                 title: 'John Doe\'s Bundle',
                 description: 'This is a description',
+                img: ''
             }
         },
         mounted() {
@@ -67,6 +68,8 @@
                     this.bundle = response.data.products;
                     this.title = response.data.title;
                     this.description = response.data.description;
+                    this.img = response.data.img;
+                    console.log('img is ' + response.data.img);
                     let products = response.data.products.join(';');
                     console.log(products)
                     this.$continenteAPI.post('/continenteOnline/search/productId', {
@@ -95,21 +98,44 @@
                     })
                 }
             })
+        },
+        methods: {
+            addBundleToCart: function() {
+                let Products = this.bundle.map((elem) => {
+                    return {
+                        "ProductId": elem.ProductCode + "(eCsf_RetekProductCatalog_MegastoreContinenteOnline_Continente)",
+                        "VariantId": null,
+                        "Quantity": 1,
+                        "RequestedSalesUnity": "Unit",
+                        "CustomerNotes": "",
+                        "NumberOfItemsToReturn": 10
+                    }
+                })
+
+                let body = {
+                    "Products": Products,
+                    "ContextKey": "Continente"
+                }
+
+                console.log(body);
+                this.$continenteAPI.post('/continenteOnline/shopping/addProducts', body).then((response) => {
+                    console.log('YAY')
+                });
+            }
         }
     }
 </script>
 
 <style>
-button.add-all {
-    height: 50%;
-    align-self: right;
-    margin: 1rem;
-}
-button.add-all *{
-    vertical-align: middle;
-}
-
-button.add-all > span > i {
-    padding-left: 1rem;
-}
+    button.add-all {
+        height: 50%;
+        align-self: right;
+        margin: 1rem;
+    }
+    button.add-all * {
+        vertical-align: middle;
+    }
+    button.add-all>span>i {
+        padding-left: 1rem;
+    }
 </style>
