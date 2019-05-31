@@ -1,6 +1,10 @@
 # Bithackathon
 Code and Ideas for BIT Hackathon by SONAE MC for team Pyto
 
+## TODO
+Creation of Bundles
+Personalised links to bundles (mainly front-end)
+
 Main
 * [Hackathon Homepage](https://bithackathon.sonae.pt/)
 * [TAIKAI](https://taikai.network/bit/challenges/bithackathon)
