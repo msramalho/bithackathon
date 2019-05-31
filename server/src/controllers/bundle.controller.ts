@@ -42,7 +42,7 @@ export class BundleController {
     },
   })
   async create(@requestBody() bundle: Bundle): Promise<Bundle> {
-    console.log(this.user.id);
+    console.log(`Trying to create a Bundle as User "${this.user.id}"`);
     return await this.bundleRepository.create(bundle);
   }
 
