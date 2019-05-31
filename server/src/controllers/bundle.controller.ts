@@ -16,8 +16,8 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import { Bundle, Tag, BundleTagRelation } from '../models';
-import { BundleRepository, TagRepository, BundleTagRelationRepository } from '../repositories';
+import { Bundle } from '../models';
+import { BundleRepository, BundleTagRelationRepository } from '../repositories';
 import { authenticate, AuthenticationBindings, UserProfile } from '@loopback/authentication';
 import { inject } from '@loopback/context';
 
@@ -25,8 +25,6 @@ export class BundleController {
   constructor(
     @repository(BundleRepository)
     public bundleRepository: BundleRepository,
-    @repository(TagRepository)
-    public tagRepository: TagRepository,
     @repository(BundleTagRelationRepository)
     public bundleTagRelationRepository: BundleTagRelationRepository,
     @inject(AuthenticationBindings.CURRENT_USER, { optional: true }) private user: UserProfile,
