@@ -1,12 +1,33 @@
 <template>
-    <div class="container-fluid list">
-        <h1>{{ $route.params.id }}</h1>
-        <h2>{{ this.title }}</h2>
-        <div>
-            <template bundle>
-            <Lists :products="bundle"></Lists>
-            </template>
-        </div>
+    <div>
+        <section class="section-profile-cover section-shaped my-0">
+            <div class="shape shape-style-1 shape-primary shape-skew alpha-4">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+        <section class="section section-skew mt--300">
+            <div class="container">
+                <div class="card shadow" no-body>
+                    <div class="px-4">
+                        <div class="list">
+                            <h1 class="mt-4">{{ this.title }}</h1>
+                            <p class="lead">
+                                {{ this.description }}
+                            </p>
+                            <div>
+                                <Lists :products="bundle"></Lists>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -79,4 +100,5 @@
 
 
 <style>
+
 </style>

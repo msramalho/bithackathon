@@ -27,7 +27,6 @@
 
 <style>
     .prod {
-        margin: 0.5rem;
         height: 90%;
     }
     .prod-img {
