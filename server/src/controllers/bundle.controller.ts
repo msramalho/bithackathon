@@ -42,7 +42,7 @@ export class BundleController {
     },
   })
   async create(@requestBody() bundle: Bundle): Promise<Bundle> {
-    console.log(`Trying to create a Bundle as User "${this.user.id}"`);
+    console.log(`Creating Bundle as User "${this.user.id}"`);
     bundle.creatorId = this.user.id;
     return await this.bundleRepository.create(bundle);
   }
@@ -61,6 +61,8 @@ export class BundleController {
     return await this.bundleRepository.count(where);
   }
 
+  // localhost:3000/bundles?filter[where][creatorId]=<creator_id> should also work
+  @authenticate('JWTStrategy')
   @get('/bundles', {
     responses: {
       '200': {
@@ -74,9 +76,11 @@ export class BundleController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Bundle)) filter?: Filter<Bundle>,
+    // @param.query.object('filter', getFilterSchemaFor(Bundle)) filter?: Filter<Bundle>,
   ): Promise<Bundle[]> {
-    return await this.bundleRepository.find(filter);
+    return await this.bundleRepository.find({
+      where: { creatorId: this.user.id }
+    });
   }
 
   @patch('/bundles', {
