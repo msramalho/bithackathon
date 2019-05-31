@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-html {
+html, main, #app, main > section {
   height: 100%;
 }
 </style>

@@ -15,8 +15,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <img src="img/icons/logo/liga2_grande_branco.png"
-                    height="200px;" />
-                    <h4><a>LIGAndo </a></h4>
+                    width="100%;" />
                 </div>
             </div>
         </div>
