@@ -19,7 +19,7 @@
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img v-lazy="'img/theme/team-4-800x800.jpg'" class="rounded-circle">
+                                        <img v-lazy="img" class="rounded-circle">
                                     </a>
                                 </div>
                             </div>
@@ -43,15 +43,15 @@
                             </div>
                         </div>
                         <div class="text-center mt-5">
-                            <h3>Patrícia Yolanda Torres Oliveira
-                                <span class="font-weight-light">, 27</span>
+                            <h3>{{this.name}}
+                                <span class="font-weight-light">, {{this.age}}</span>
                             </h3>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Porto, Portugal</div>
                         </div>
                         <div class="mt-5 py-5 border-top text-center">
                             <div class="row justify-content-center">
                                 <div class="col-lg-9">
-                                    <p>Cozinheira de fim-de-semana.</p>
+                                    <p>{{this.description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,31 @@
     </div>
 </template>
 <script>
-export default {};
+import Vue from 'vue'
+
+export default {
+    data() {
+        return {
+            name: '',
+            description: '',
+            age: 27,
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLDiq-PAumHiPE0OKOxdUGo_-Y-AEw0-RYNc2XF1sVB8bJU5rj',
+        }
+    },
+
+    mounted() {
+        this.$localAPI.get('/users/myProfile').then((res) => {
+            console.log(res);
+            if (res.status == 200) {
+                this.name = res.data.name;
+                this.description = res.data.description;
+                if (res.data.img !== undefined && res.data.img != '') {
+                    this.img = res.data.img;
+                }
+            }
+        })
+    },
+};
 </script>
 <style>
 </style>
