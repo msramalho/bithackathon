@@ -1,17 +1,17 @@
 <template>
-    <div>
+    <div class="container-fluid list">
         <h1>{{ $route.params.id }}</h1>
         <h2>{{ this.title }}</h2>
         <div>
-            <ul>
-                <li :key="item.ProductCode" v-for="item in bundle">{{ item }}</li>
-            </ul>
+            <template bundle>
+            <Lists :products="bundle"></Lists>
+            </template>
         </div>
     </div>
 </template>
 
 <script>
-    import Product from '../components/Product'
+    import Lists from './Lists'
     function parse_arr(arr_arr) {
         return arr_arr.map(arr_to_obj)
     }
@@ -24,10 +24,11 @@
     }
     export default {
         props: {
-            id: Number
+            id: Number,
+            lists: Array
         },
         components: {
-            Product
+            Lists
         },
         data() {
             return {
@@ -44,10 +45,8 @@
                     this.bundle = response.data.products;
                     this.title = response.data.title;
                     this.description = response.data.description;
-
                     let products = response.data.products.join(';');
                     console.log(products)
-
                     this.$continenteAPI.post('/continenteOnline/search/productId', {
                         "ProductId": products,
                         "NumberOfItemsToReturn": 10,
@@ -65,7 +64,6 @@
                     }).then((response) => {
                         console.log('OAAAA');
                         console.log(response);
-
                         console.log(response.data.SearchResultItems);
                         this.bundle = parse_arr(response.data.SearchResultItems);
                     }).catch((error) => {
@@ -81,5 +79,4 @@
 
 
 <style>
-
 </style>
