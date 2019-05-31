@@ -79,7 +79,7 @@
         },
         mounted() {
             console.log('olaaa');
-            this.$localAPI.get('/bundles/',{withCredentials: true}).then((response) => {
+            this.$localAPI.get('/bundles/').then((response) => {
                 console.log('cenas')
                 if (response.status == 200) {
                     console.log(response.data)
