@@ -18,7 +18,7 @@
                         <div class="list">
                             <div class="row">
                                 <h1 class="col-lg-9 col-md-8 mt-4">{{ this.title }}<br>
-                                <small>{{ totalPrice }}€</small>
+                                <small>{{ Math.round(totalPrice*100)/100 }}€</small>
                                 </h1>
 
                                 <base-button @click="addBundleToCart" type="default" class="add-all col-lg-2 col-md-3 btn btn-default mt-lg-4 ml-lg-5">Adicionar <i class="fa fa-fw fa-shopping-cart"></i></base-button>
