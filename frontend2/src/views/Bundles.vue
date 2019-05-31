@@ -23,20 +23,15 @@
                                     <span class="icon"><i class="fa fa-plus-circle"></i></span>
                                 </button>
                             </div>
-                            <p class="lead">
-                                {{ this.description }}
-                            </p>
-                            <div :key="bundle.id" v-for="bundle in bundles" >
-                                <card shadow class="shadow-lg--hover mt-5">
-                                    <div class="d-flex px-3">
+                            <div class="bundle-list" :key="bundle.id" v-for="bundle in bundles">
+                                <card shadow class="shadow-lg--hover mt-5" style="border-radius: 20px;">
+                                    <div class="bundle d-flex px-3">
                                         <div>
-                                            <icon name="ni ni-satisfied" gradient="success" color="white" shadow
-                                                rounded></icon>
+                                            <img :src="bundle.img" alt="">
                                         </div>
-                                        <div class="pl-4">
-                                            <h5 class="title text-success">Awesome Support</h5>
-                                            <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
-                                                every summer, and that process will continue whatever happens.</p>
+                                        <div class="text pl-4">
+                                            <h5 class="title text-success">{{ bundle.title }}</h5>
+                                            <p>{{ bundle.description }}</p>
                                             <a href="#" class="text-success">Learn more</a>
                                         </div>
                                     </div>
@@ -63,18 +58,13 @@
         return o
     }
     export default {
-        props: {
-            id: Number,
-            lists: Array
-        },
         components: {
             Lists
         },
         data() {
             return {
                 bundles: [],
-                title: 'John Doe\'s Bundle',
-                description: 'This is a description',
+                title: 'John Doe\'s Bundles'
             }
         },
         mounted() {
@@ -82,6 +72,7 @@
             this.$localAPI.get('/bundles/').then((response) => {
                 console.log('cenas')
                 if (response.status == 200) {
+                    this.bundles = response.data
                     console.log(response.data)
                 }
             })
@@ -90,16 +81,16 @@
 </script>
 
 <style>
-button.add-all {
-    height: 50%;
-    align-self: right;
-    margin: 1rem;
+.bundle-list:last-child {
+    margin-bottom: 2em;
 }
-button.add-all *{
-    vertical-align: middle;
+.bundle div.text {
+    display: grid;
 }
-
-button.add-all > span > i {
-    padding-left: 1rem;
+.bundle div.text * {
+    margin: 1em;
+}
+.bundle img {
+    height: 12em;
 }
 </style>
