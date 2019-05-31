@@ -19,7 +19,8 @@
         props: {
             name: String,
             id: String,
-            price: Number,
+            brand: String,
+            price: String,
         }
     }
 </script>
@@ -27,6 +28,7 @@
 <style>
     .prod {
         margin: 0.5rem;
+        height: 90%;
     }
     .prod-img {
         text-align: center;
@@ -35,6 +37,12 @@
         text-align: left;
         padding-top: 1em;
         font-weight: 700;
+        display: block; /* or inline-block */
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        height: 5em;
+        line-height: 1.8em;
     }
     .description {
         text-align: right;
