@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="section-profile-cover section-shaped my-0">
+        <section class="section-profile-cover section-shaped my-0 bg-gradient-default">
             <div class="shape shape-style-3 shape-primary shape-skew alpha-4">
                 <span></span>
                 <span></span>
@@ -62,7 +62,7 @@
         data() {
             return {
                 bundles: [],
-                title: 'John Doe\'s Bundles'
+                title: 'Bundles da Maria'
             }
         },
         mounted() {
