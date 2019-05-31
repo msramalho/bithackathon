@@ -102,7 +102,6 @@ export class UserController {
 
     // Login at SONAE API
     // if successful, return jwt token and sonae's api token
-
     let res = await request_post(
       UserController.SONAE_API + '/continenteOnline/authentication/login',
       {
@@ -120,6 +119,7 @@ export class UserController {
     console.log(res);
 
     let serviceToken: string = res.Context.ServiceAccessToken;
+    this.userRepository.updateById(storedUser._id, { userContent: res.Context.User });
 
     // If credentials are OK, generate signed token with private shared key
     const payload: Payload = {

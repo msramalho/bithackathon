@@ -11,6 +11,11 @@ export class Bundle extends Entity {
 
   @property({
     type: 'string',
+  })
+  creatorId?: string;
+
+  @property({
+    type: 'string',
     required: true,
   })
   title: string;

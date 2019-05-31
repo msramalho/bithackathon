@@ -43,6 +43,7 @@ export class BundleController {
   })
   async create(@requestBody() bundle: Bundle): Promise<Bundle> {
     console.log(`Trying to create a Bundle as User "${this.user.id}"`);
+    bundle.creatorId = this.user.id;
     return await this.bundleRepository.create(bundle);
   }
 
