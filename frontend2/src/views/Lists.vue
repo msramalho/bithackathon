@@ -4,7 +4,7 @@
       <h1>Lists</h1>
       <div class="prod-list">
         <template v-for="product in products">
-          <Product :name="product.name" :price="product.price" :id="product.id" :key="product.id"></Product>
+          <Product :name="product.WebDisplayName" :brand="product.Brand" :price="product.OriginalListPrice" :id="product.ProductCode" :key="product.id"></Product>
         </template>
       </div>
     </section>
@@ -15,37 +15,11 @@
   import Product from '../components/Product'
   export default {
     name: "lists",
+    props: {
+      products: Array
+    },
     components: {
       Product
-    },
-    data() {
-      return {
-        products: [{
-          name: "a",
-          price: 2,
-          id: "12"
-        }, {
-          name: "B",
-          price: 69,
-          id: "12213"
-        }, {
-          name: "C",
-          price: 96.2,
-          id: "13122"
-        },{
-          name: "a",
-          price: 2,
-          id: "14122"
-        }, {
-          name: "B",
-          price: 69,
-          id: "12213123"
-        }, {
-          name: "C",
-          price: 96.2,
-          id: "13131222"
-        }]
-      };
     }
   };
 </script>
