@@ -18,7 +18,7 @@
                         <div class="list">
                             <div class="row">
                                 <h1 class="col-lg-9 col-md-8 mt-4">{{ this.title }}</h1>
-                                <base-button type="default" class="add-all col-lg-2 col-md-3 btn btn-default mt-lg-4 ml-lg-5">Adicionar <i class="fa fa-fw fa-shopping-cart"></i></base-button>
+                                <base-button @click="addBundleToCart" type="default" class="add-all col-lg-2 col-md-3 btn btn-default mt-lg-4 ml-lg-5">Adicionar <i class="fa fa-fw fa-shopping-cart"></i></base-button>
                             </div>
                             <p class="lead">
                                 {{ this.description }}
@@ -98,22 +98,44 @@
                     })
                 }
             })
+        },
+        methods: {
+            addBundleToCart: function() {
+                let Products = this.bundle.map((elem) => {
+                    return {
+                        "ProductId": elem.ProductCode + "(eCsf_RetekProductCatalog_MegastoreContinenteOnline_Continente)",
+                        "VariantId": null,
+                        "Quantity": 1,
+                        "RequestedSalesUnity": "Unit",
+                        "CustomerNotes": "",
+                        "NumberOfItemsToReturn": 10
+                    }
+                })
+
+                let body = {
+                    "Products": Products,
+                    "ContextKey": "Continente"
+                }
+
+                console.log(body);
+                this.$continenteAPI.post('/continenteOnline/shopping/addProducts', body).then((response) => {
+                    console.log('YAY')
+                });
+            }
         }
     }
 </script>
 
 <style>
-button.add-all {
-    height: 50%;
-    align-self: right;
-    margin: 1rem;
-}
-button.add-all *{
-    vertical-align: middle;
-}
-
-button.add-all > span > i {
-    padding-left: 1rem;
-}
-
+    button.add-all {
+        height: 50%;
+        align-self: right;
+        margin: 1rem;
+    }
+    button.add-all * {
+        vertical-align: middle;
+    }
+    button.add-all>span>i {
+        padding-left: 1rem;
+    }
 </style>
