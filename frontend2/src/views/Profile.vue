@@ -77,6 +77,7 @@
             }
         },
         mounted() {
+            // Fetch profile info
             this.$localAPI.get('/users/myProfile').then((res) => {
                 console.log(res);
                 if (res.status == 200) {
@@ -89,6 +90,8 @@
                 }
             }).then(() => {
                 if (this.id === null) return;
+
+                // Fetch followers
                 this.$localAPI.get('/follow-relations?filter[where][followee]=' + this.id)
                     .then((res) => {
                         console.log(res);
@@ -97,6 +100,15 @@
                         }
                     });
             })
+
+            // Fetch own bundles
+            this.$localAPI.get('/bundles')
+                .then((res) => {
+                    console.log(res);
+                    if (res.status == 200) {
+                        this.bundles = res.data;
+                    }
+                });
         },
     };
 </script>
