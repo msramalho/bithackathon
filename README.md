@@ -5,7 +5,11 @@
 ## The Project
 > Link to the project's [Taikai page](https://taikai.network/bit/challenges/bithackathon/projects/cjwb3s82c54m408512x49sd0m)
 
-## Team Pyto @[BitHackathon](https://taikai.network/bit/challenges/bithackathon)
+> [TODO: FILL HERE FROM TAIKAI]()
+
+> [Project in Action](https://youtu.be/9YodYrne7wo)
+
+## Team Pyto [@BitHackathon](https://taikai.network/bit/challenges/bithackathon)
 
 - [afonsojramos](https://github.com/afonsojramos)
 - [andrefcruz](https://github.com/AndreFCruz)
