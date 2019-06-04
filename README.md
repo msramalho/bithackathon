@@ -41,6 +41,24 @@ Here's a list of the main functionalities in our Minimum Viable Product:
 - [x] Share functionality through URL
 - [x] Add to basket (bundle or single product)*
 
+#### Running the MVP
+
+Inside the repository's main directory:
+
+```shell
+$ cd server
+$ npm install # install dependencies
+$ npm start # run the server
+```
+
+On a separate terminal window:
+
+```shell
+$ cd frontend
+$ npm install # install dependencies
+$ npm serve # run the app
+```
+
 ### Why LIGA?
 Liga is connecting in Portuguese. We connect people's interests and necessities.
 
@@ -48,6 +66,7 @@ Liga is connecting in Portuguese. We connect people's interests and necessities.
 
 |![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png)|![](https://cdn-images-1.medium.com/max/1200/1*OrjCKmou1jT4It5so5gvOA.jpeg)|![](https://repository-images.githubusercontent.com/78452015/2e9bdb80-6b51-11e9-9630-fdcead4ff24d)|
 |:-:|:-:|:-:|
+
 
 ## Team Pyto [@BitHackathon](https://taikai.network/bit/challenges/bithackathon)
 
